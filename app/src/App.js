@@ -37,7 +37,7 @@ const App = () => {
       <div className="form-header">
         <h1>Formularz rejestracyjny na szkołę letnią</h1>
         <button onClick={handleOpenDialog} className="dialog-button">
-          O nas
+          Info
         </button>
       </div>
       <form action="#" method="post">
