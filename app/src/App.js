@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 
 const countries = [
@@ -219,6 +219,7 @@ const App = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [countryInput, setCountryInput] = useState('');
   const [countryOptions, setCountryOptions] = useState([]);
+  const countryInputRef = useRef(null);
 
   const handlePhoneNumberChange = (event) => {
     const inputPhoneNumber = event.target.value.replace(/[^0-9]/g, '');
@@ -258,6 +259,22 @@ const App = () => {
   setCountryInput(''); // Dodane resetowanie pola countryInput
   setCountryOptions([]);
 };
+ const handleOutsideClick = (event) => {
+    if (
+      countryInputRef.current &&
+      !countryInputRef.current.contains(event.target)
+    ) {
+      setCountryOptions([]);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('click', handleOutsideClick);
+
+    return () => {
+      window.removeEventListener('click', handleOutsideClick);
+    };
+  }, []);
 
   return (
     <div className="container"> 
@@ -337,12 +354,13 @@ const App = () => {
         <div className="form-group">
           <label htmlFor="country">Kraj:</label>
           <input
-            type="text"
-            id="country"
-            name="country"
-            value={countryInput}
-            onChange={handleCountryInputChange}
-            placeholder="Wyszukaj kraj"
+           type="text"
+          id="country"
+          name="country"
+          value={countryInput}
+          onChange={handleCountryInputChange}
+          placeholder="Wyszukaj kraj"
+          ref={countryInputRef}
           />
           <div className="country-options">
   {countryOptions.map((option, index) => (
@@ -355,6 +373,7 @@ const App = () => {
     </button>
   ))}
 </div>
+
         </div>
         <div className="form-group">
           <button type="submit">Zapisz się</button>
