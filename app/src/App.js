@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 
 const countries = [
-  'Polska',
+'Polska',
 'Niemcy',
 'Francja',
 'Włochy',
@@ -238,7 +238,7 @@ const App = () => {
     setPhoneNumber(formattedPhoneNumber);
   };
 
-  const handleCountryInputChange = (event) => {
+   const handleCountryInputChange = (event) => {
     const input = event.target.value;
     setCountryInput(input);
 
@@ -252,6 +252,12 @@ const App = () => {
     setCountryInput(country);
     setCountryOptions([]);
   };
+
+  const handleFormReset = () => {
+  setPhoneNumber('');
+  setCountryInput(''); // Dodane resetowanie pola countryInput
+  setCountryOptions([]);
+};
 
   return (
     <div className="container"> 
@@ -336,21 +342,26 @@ const App = () => {
             name="country"
             value={countryInput}
             onChange={handleCountryInputChange}
-            required
+            placeholder="Wyszukaj kraj"
           />
-          {countryOptions.length > 0 && (
-            <ul className="country-options">
-              {countryOptions.map((option) => (
-                <li key={option} onClick={() => handleCountrySelection(option)}>
-                  {option}
-                </li>
-              ))}
-            </ul>
-          )}
+          <div className="country-options">
+  {countryOptions.map((option, index) => (
+    <button
+      key={index}
+      onClick={() => handleCountrySelection(option)}
+      className="country-option"
+    >
+      {option}
+    </button>
+  ))}
+</div>
         </div>
         <div className="form-group">
           <button type="submit">Zapisz się</button>
-          <button type="reset">Resetuj</button>
+         <button type="reset" onClick={handleFormReset}>
+  Resetuj
+</button>
+
         </div>
       </form>
       <footer className="contact-info">
