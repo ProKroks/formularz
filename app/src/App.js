@@ -2,17 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 
 const App = () => {
-  const [dialogOpen, setDialogOpen] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
-
-  const handleOpenDialog = () => {
-    setDialogOpen(true);
-  };
-
-  const handleCloseDialog = () => {
-    setDialogOpen(false);
-  };
-
   const handlePhoneNumberChange = (event) => {
     const inputPhoneNumber = event.target.value.replace(/[^0-9]/g, '');
     let formattedPhoneNumber = '';
@@ -27,8 +17,7 @@ const App = () => {
       if (inputPhoneNumber.length > 6) {
         formattedPhoneNumber += '-' + inputPhoneNumber.slice(6, 9);
       }
-    }
-
+    } 
     setPhoneNumber(formattedPhoneNumber);
   };
 
@@ -36,9 +25,34 @@ const App = () => {
     <div className="container"> 
       <div className="form-header">
         <h1>Formularz rejestracyjny na szkołę letnią</h1>
-        <button onClick={handleOpenDialog} className="dialog-button">
-          Info
-        </button>
+      </div>
+      <div id="one" className="container-fluid bg-2 text-center">
+        <h3 className="margin">Bootcamp</h3>
+        <p>
+        <br></br>
+        Nasz bootcamp jest intensywnym programem szkoleniowym, który skupia się na nauce programowania HTML, CSS, JavaScript oraz React - popularnej biblioteki JavaScript do tworzenia interaktywnych interfejsów użytkownika. Podczas trwania bootcampu zapoznasz się z podstawami tych języków programowania i zdobędziesz umiejętności, które pozwolą Ci tworzyć wspaniałe strony internetowe, w tym strony z dynamicznymi formularzami.
+        <br></br>
+        <br></br>
+        Podczas pierwszej części bootcampu skupimy się na nauce HTML i CSS, które są podstawowymi językami do tworzenia struktur i stylizacji stron internetowych. Nauczysz się, jak tworzyć semantyczne znaczniki HTML i jak używać CSS, aby nadać swoim stroną unikalny wygląd i układ.
+        <br></br>
+        <br></br>
+        W drugiej części skoncentrujemy się na nauce JavaScript, który jest niezbędny do tworzenia interaktywnych i dynamicznych elementów na stronach internetowych. Nauczysz się podstaw programowania w JavaScript, manipulowania elementami strony, walidacji formularzy i zarządzania zdarzeniami.
+        <br></br>
+        <br></br>
+        Ostatnia część będzie przeznaczona na nauke JavaScript, a następnie React. React to biblioteka JavaScript, która pozwala tworzyć interaktywne interfejsy użytkownika. Nauczysz się, jak tworzyć komponenty React, zarządzać stanem aplikacji i tworzyć dynamiczne formularze.
+        <br></br>
+        <br></br>
+        Bootcamp odbywać się będzie na terenie Politechniki Łódzkiej w dniach 2.08.2023 - 23.08.2023, od poniedziałku do piątku w godzinach 17:00 - 20:00.
+        <br></br>
+        <br></br>
+        Czas trwania kursu, łącznie to 48h, w tym:
+        <br></br>
+        HTML/CSS - 17h
+        <br></br>
+        JS - 15h
+        <br></br>
+        React - 16h
+    </p>
       </div>
       <form action="#" method="post">
         <div className="form-group">
@@ -90,25 +104,18 @@ const App = () => {
           <button type="reset">Resetuj</button>
         </div>
       </form>
-      {dialogOpen && (
-        <dialog open className="dialog">
-          <form method="dialog">
-            <p>Nasz bootcamp</p>
-            <button onClick={handleCloseDialog}>Zamknij</button>
-          </form>
-        </dialog>
-      )}
-
       <footer className="contact-info">
-        <p>Kontakt:</p>
-        <p>Email: kontakt@example.com</p>
-        <p>Numer telefonu: 123-456-789</p>
+         <h3>Kontakt</h3>
+        <p>Telefon: +48 221 666 212</p>
+        <p>Email: Bootcamp@gmail.com</p>
+        <h2>IT Bootcamp &copy; 2023</h2>
       </footer>
     </div>
   );
 };
 
 export default App;
+
 
 
 

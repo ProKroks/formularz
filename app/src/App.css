@@ -174,7 +174,7 @@ button[type="reset"]:hover {
     font-size: 14px;
   }
 }
-/* problematyczny kod gender */
+
 #gender {
   width: 101%;
   padding: 10px;
@@ -186,4 +186,16 @@ button[type="reset"]:hover {
   color: #6e0000;
   margin-left: auto;
   margin-right: auto;
+}
+footer {
+  color: white;
+  background-color: #610606;
+  padding: 20px;
+  text-align: left;
+}
+
+footer h2 {
+  color: white;
+  font-size: 18px;
+  text-align: center;
 }
